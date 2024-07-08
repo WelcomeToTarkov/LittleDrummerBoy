@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 
 import { DependencyContainer } from "tsyringe";
-import { IPostDBLoadMod } from "@spt-aki/models/external/IPostDBLoadMod";
-import { IPreAkiLoadMod } from "@spt-aki/models/external/IPreAkiLoadMod";
-import { LogTextColor } from "@spt-aki/models/spt/logging/LogTextColor";
-import type { GameController } from "@spt-aki/controllers/GameController";
-import type { IEmptyRequestData } from "@spt-aki/models/eft/common/IEmptyRequestData";
+import { IPostDBLoadMod } from "@spt/models/external/IPostDBLoadMod";
+import { IpreSptLoadMod } from "@spt/models/external/IpreSptLoadMod";
+import { LogTextColor } from "@spt/models/spt/logging/LogTextColor";
+import type { GameController } from "@spt/controllers/GameController";
+import type { IEmptyRequestData } from "@spt/models/eft/common/IEmptyRequestData";
 
 // WTT imports
 import { WTTInstanceManager } from "./WTTInstanceManager";
@@ -14,7 +14,7 @@ import { LittleDrummerBoyItemService } from "./LittleDrummerBoyItemService";
 
 
 class LittleDrummerBoy
-implements IPreAkiLoadMod, IPostDBLoadMod
+implements IpreSptLoadMod, IPostDBLoadMod
 {
     private Instance: WTTInstanceManager = new WTTInstanceManager();
     private version: string;
@@ -41,14 +41,14 @@ implements IPreAkiLoadMod, IPostDBLoadMod
         m4a1_magazine_cmag: "c29c6c3762a2414440fb69c9"
     };
 
-    public preAkiLoad(container: DependencyContainer): void 
+    public preSptLoad(container: DependencyContainer): void 
     {
-        this.Instance.preAkiLoad(container, this.modName);
+        this.Instance.preSptLoad(container, this.modName);
         this.Instance.debug = this.debug;
         this.fixStupidMongoIds();
 
         // Custom Bosses
-        this.LittleDrummerBoyItemService.preAkiLoad(this.Instance);
+        this.LittleDrummerBoyItemService.preSptLoad(this.Instance);
 
     }
 

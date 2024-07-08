@@ -37,7 +37,7 @@ class LittleDrummerBoyItemService {
     constructor() {
         this.configs = this.loadCombinedConfig();
     }
-    preAkiLoad(Instance) {
+    preSptLoad(Instance) {
         this.Instance = Instance;
     }
     postDBLoad() {

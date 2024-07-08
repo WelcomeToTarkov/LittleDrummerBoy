@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { NewItemFromCloneDetails } from "@spt-aki/models/spt/mod/NewItemDetails";
+import { NewItemFromCloneDetails } from "@spt/models/spt/mod/NewItemDetails";
 import {
     Preset,
     Item,
@@ -12,11 +12,11 @@ import {
 import { ItemMap } from "./references/items";
 import { ItemBaseClassMap } from "./references/itemBaseClasses";
 import { ItemHandbookCategoryMap } from "./references/itemHandbookCategories";
-import { LogTextColor } from "@spt-aki/models/spt/logging/LogTextColor";
+import { LogTextColor } from "@spt/models/spt/logging/LogTextColor";
 import * as fs from "fs";
 import * as path from "path";
 import { WTTInstanceManager } from "./WTTInstanceManager";
-import { IDatabaseTables } from "@spt-aki/models/spt/server/IDatabaseTables";
+import { IDatabaseTables } from "@spt/models/spt/server/IDatabaseTables";
 
 export class LittleDrummerBoyItemService
 {
@@ -28,7 +28,7 @@ export class LittleDrummerBoyItemService
         this.configs = this.loadCombinedConfig();
     }
 
-    public preAkiLoad(Instance: WTTInstanceManager): void 
+    public preSptLoad(Instance: WTTInstanceManager): void 
     {
         this.Instance = Instance;
     }
