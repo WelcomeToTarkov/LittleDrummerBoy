@@ -10,7 +10,7 @@ import type { IEmptyRequestData } from "@spt/models/eft/common/IEmptyRequestData
 // WTT imports
 import { WTTInstanceManager } from "./WTTInstanceManager";
 
-import { LittleDrummerBoyItemService } from "./LittleDrummerBoyItemService";
+import { CustomItemService } from "./CustomItemService";
 
 
 class LittleDrummerBoy
@@ -21,7 +21,7 @@ implements IpreSptLoadMod, IPostDBLoadMod
     private modName = "WTT-Little Drummer Boy";
 
     //#region CustomBosses
-    private LittleDrummerBoyItemService: LittleDrummerBoyItemService = new LittleDrummerBoyItemService();
+    private CustomItemService: CustomItemService = new CustomItemService();
 
     debug = false;
 
@@ -48,14 +48,14 @@ implements IpreSptLoadMod, IPostDBLoadMod
         this.fixStupidMongoIds();
 
         // Custom Bosses
-        this.LittleDrummerBoyItemService.preSptLoad(this.Instance);
+        this.CustomItemService.preSptLoad(this.Instance);
 
     }
 
     postDBLoad(container: DependencyContainer): void 
     {
         this.Instance.postDBLoad(container);
-        this.LittleDrummerBoyItemService.postDBLoad();
+        this.CustomItemService.postDBLoad();
         this.Instance.logger.log(
             `[${this.modName}] Database: Loading complete.`,
             LogTextColor.GREEN
